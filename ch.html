@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul scientifique pour chimie</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="chi.css">
+</head>
+<body>
+    <style>
+        .navbar-gradient {
+            background: linear-gradient(to right, #071d9b, #8aa214); 
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-gradient">
+    
+    
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="statistique.html">Accueil</a>
+                    </li>
+                    <a class="navbar-brand" href="index.html">Fonctionnalités</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">À propos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h3 id="ccp">Calcul scientifique pour chimie</h3>
+    
+    <div class="container">
+        <h1 class="text-center">Calcul de la Masse Molaire</h1>
+        <form id="molarMassForm">
+            <div class="form-group">
+                <label for="hydrogenCount">Nombre d'atomes d'hydrogène (H) :</label>
+                <input type="number" class="form-control" id="hydrogenCount" placeholder="Ex : 2" required>
+            </div>
+            <div class="form-group">
+                <label for="oxygenCount">Nombre d'atomes d'oxygène (O) :</label>
+                <input type="number" class="form-control" id="oxygenCount" placeholder="Ex : 1" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Calculer</button>
+        </form>
+        <h2 class="mt-4">Masse Molaire : <span id="molarMass">-</span> g/mol</h2>
+    </div>
+
+    <script>
+        document.getElementById('molarMassForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const hydrogenCount = parseFloat(document.getElementById('hydrogenCount').value);
+            const oxygenCount = parseFloat(document.getElementById('oxygenCount').value);
+
+            const hydrogenMass = 1; // Masse molaire de l'hydrogène (g/mol)
+            const oxygenMass = 16; // Masse molaire de l'oxygène (g/mol)
+
+            const molarMass = (hydrogenCount * hydrogenMass) + (oxygenCount * oxygenMass);
+            document.getElementById('molarMass').textContent = molarMass;
+        });
+    </script>
+<div class="container">
+    <h1 class="text-center">Calcul de la Concentration Molaire</h1>
+    <form id="molarityForm">
+        <div class="form-group">
+            <label for="moles">Nombre de moles de soluté \( n \) :</label>
+            <input type="number" class="form-control" id="moles" placeholder="Ex : 0.2" step="any" required>
+        </div>
+        <div class="form-group">
+            <label for="volume">Volume de la solution \( V \) (en L) :</label>
+            <input type="number" class="form-control" id="volume" placeholder="Ex : 4" step="any" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculer</button>
+    </form>
+    <h2 class="mt-4">Concentration Molaire : <span id="concentration">-</span> mol/L</h2>
+</div>
+
+<script>
+    document.getElementById('molarityForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const moles = parseFloat(document.getElementById('moles').value);
+        const volume = parseFloat(document.getElementById('volume').value);
+
+        const concentration = moles / volume;
+        document.getElementById('concentration').textContent = concentration.toFixed(3);
+    });
+</script>
+<div class="container">
+    <h1 class="text-center">Calcul du pH d'une Solution</h1>
+    <form id="phForm">
+        <div class="form-group">
+            <label for="hConcentration">Concentration en ions \( [\text{H}^+] \) (en mol/L) :</label>
+            <input type="number" class="form-control" id="hConcentration" placeholder="Ex : 1e-4" step="any" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculer</button>
+    </form>
+    <h2 class="mt-4">pH : <span id="phResult">-</span></h2>
+</div>
+
+<script>
+    document.getElementById('phForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const concentration = parseFloat(document.getElementById('hConcentration').value);
+        const pH = -Math.log10(concentration);
+
+        document.getElementById('phResult').textContent = pH.toFixed(2);
+    });
+</script>
+<div class="container">
+    <h1 class="text-center">Calcul de la Pression (Lois des Gaz Parfaits)</h1>
+    <form id="gasLawForm">
+        <div class="form-group">
+            <label for="moles">Nombre de moles \( n \) :</label>
+            <input type="number" class="form-control" id="moles" placeholder="Ex : 2" step="any" required>
+        </div>
+        <div class="form-group">
+            <label for="volume">Volume \( V \) (en m³) :</label>
+            <input type="number" class="form-control" id="volume" placeholder="Ex : 0.1" step="any" required>
+        </div>
+        <div class="form-group">
+            <label for="temperature">Température \( T \) (en K) :</label>
+            <input type="number" class="form-control" id="temperature" placeholder="Ex : 300" step="any" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculer</button>
+    </form>
+    <h2 class="mt-4">Pression : <span id="pressure">-</span> Pa</h2>
+</div>
+
+<script>
+    document.getElementById('gasLawForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const moles = parseFloat(document.getElementById('moles').value);
+        const volume = parseFloat(document.getElementById('volume').value);
+        const temperature = parseFloat(document.getElementById('temperature').value);
+        
+        const R = 8.314; // Constante des gaz parfaits en J/(mol·K)
+        const pressure = (moles * R * temperature) / volume;
+
+        document.getElementById('pressure').textContent = pressure.toFixed(2);
+    });
+</script>
+<div class="container">
+    <h1 class="text-center">Calcul de l'Énergie de Liaison</h1>
+    <form id="bondEnergyForm">
+        <div class="form-group">
+            <label for="C_H_energy">Énergie par liaison \( C-H \) (kJ/mol) :</label>
+            <input type="number" class="form-control" id="C_H_energy" placeholder="Ex : 412" step="any" required>
+        </div>
+        <div class="form-group">
+            <label for="C_C_energy">Énergie par liaison \( C-C \) (kJ/mol) :</label>
+            <input type="number" class="form-control" id="C_C_energy" placeholder="Ex : 348" step="any" required>
+        </div>
+        <div class="form-group">
+            <label for="C_H_count">Nombre de liaisons \( C-H \) :</label>
+            <input type="number" class="form-control" id="C_H_count" placeholder="Ex : 6" step="any" required>
+        </div>
+        <div class="form-group">
+            <label for="C_C_count">Nombre de liaisons \( C-C \) :</label>
+            <input type="number" class="form-control" id="C_C_count" placeholder="Ex : 1" step="any" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculer</button>
+    </form>
+    <h2 class="mt-4">Énergie de Liaison : <span id="bondEnergy">-</span> kJ/mol</h2>
+</div>
+
+<script>
+    document.getElementById('bondEnergyForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const C_H_energy = parseFloat(document.getElementById('C_H_energy').value);
+        const C_C_energy = parseFloat(document.getElementById('C_C_energy').value);
+        const C_H_count = parseFloat(document.getElementById('C_H_count').value);
+        const C_C_count = parseFloat(document.getElementById('C_C_count').value);
+        
+        const bondEnergy = (C_H_energy * C_H_count) + (C_C_energy * C_C_count);
+
+        document.getElementById('bondEnergy').textContent = bondEnergy.toFixed(2);
+    });
+</script>
+<body>
+    <div class="container">
+        <h1 class="text-center">Calcul du Rendement Chimique</h1>
+        <form id="yieldForm">
+            <div class="form-group">
+                <label for="theoreticalYield">Rendement théorique (en moles) :</label>
+                <input type="number" class="form-control" id="theoreticalYield" placeholder="Ex : 10" step="any" required>
+            </div>
+            <div class="form-group">
+                <label for="actualYield">Rendement réel (en moles) :</label>
+                <input type="number" class="form-control" id="actualYield" placeholder="Ex : 8" step="any" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Calculer</button>
+        </form>
+        <h2 class="mt-4">Rendement Chimique : <span id="yieldResult">-</span> %</h2>
+    </div>
+
+    <script>
+        document.getElementById('yieldForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const theoreticalYield = parseFloat(document.getElementById('theoreticalYield').value);
+            const actualYield = parseFloat(document.getElementById('actualYield').value);
+            
+            // Calcul du rendement chimique
+            const yieldPercentage = (actualYield / theoreticalYield) * 100;
+            
+            // Afficher le résultat
+            document.getElementById('yieldResult').textContent = yieldPercentage.toFixed(2);
+        });
+    </script>
+</body>
+</html>

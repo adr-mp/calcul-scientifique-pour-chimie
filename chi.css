@@ -1,0 +1,41 @@
+body{
+    background-image: url("pc.jpg");
+    
+}
+.container {
+    background-color: rgba(211, 125, 27, 0.7); /* Ajouter une transparence au fond pour améliorer la lisibilité */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    max-width: 800px;
+}
+#cph{
+    text-align: center;
+    color: rgb(177, 210, 30);
+    position: relative;
+    left: 75%;
+    top: 12%;
+    border-bottom: solid;
+    display: inline;
+
+}
+.text-center{
+    border: solid;
+    background-color: rgb(47, 158, 210);
+    display: inline
+
+
+}
+.navbar-nav .nav-item {
+    margin-right: 20px; 
+}
+
+.navbar-nav .nav-item:last-child {
+    margin-right: 0; 
+}   
+#ccp{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(68, 51, 51)
+
+}
