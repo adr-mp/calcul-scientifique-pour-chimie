@@ -39,3 +39,8 @@ body{
     background-color: rgb(68, 51, 51)
 
 }
+.custom-spinner {
+    color: #93b012; /* Couleur personnalisée, ici un orange vif */
+    position: relative;
+  }
+  
