@@ -9,35 +9,85 @@
 </head>
 <body>
     <style>
-        .navbar-gradient {
-            background: linear-gradient(to right, #071d9b, #8aa214); 
+  .navbar-gradient {
+            background: linear-gradient(to right, #8aa214,  #071d9b); 
         }
     </style>
   <nav class="navbar navbar-expand-lg navbar-dark navbar-gradient">
-        <div class="spinner-grow spinner-grow-sm custom-spinner" role="status">
-            <span class="visually-hidden"></span>
-          </div>
+      <img id="logo" src="aaqq.png" alt="">
+    
         <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="statistique.html">Accueil</a>
                     </li>
-                    <a class="navbar-brand" href="index.html">Fonctionnalités </a>
-                    
-                    
+                    <a class="navbar-brand" href="index.html">Fonctionnalités</a>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">À propos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Quaternion+</a>
+                    </li>
                 </ul>
-                <div class="clearfix">
-                  </div>
             </div>
         </div>
     </nav>
-
-    <h3 id="ccp">Calcul scientifique pour chimie</h3>
+    <div class="containerr">
+        <div class="background-glow glow-1"></div>
+        <div class="background-glow glow-2"></div>
+        
+        <div class="icons">
+          <!-- Beaker icon -->
+          <div class="icon" style="animation-delay: 0s;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 3v3m8-3v3M9 12h6m-6 3h6m2 3H7a2 2 0 0 1-2-2V5h14v11a2 2 0 0 1-2 2Z"/>
+            </svg>
+          </div>
+          <!-- Calculator icon -->
+          <div class="icon" style="animation-delay: 0.2s;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="2" width="16" height="20" rx="2"/>
+              <line x1="8" y1="6" x2="16" y2="6"/>
+              <line x1="8" y1="10" x2="16" y2="10"/>
+              <line x1="8" y1="14" x2="16" y2="14"/>
+              <line x1="8" y1="18" x2="16" y2="18"/>
+            </svg>
+          </div>
+          <!-- Atom icon -->
+          <div class="icon" style="animation-delay: 0.4s;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 21a9 9 0 0 0 9-9 9 9 0 0 0-9-9 9 9 0 0 0-9 9 9 9 0 0 0 9 9z"/>
+              <path d="M3 12h18"/>
+            </svg>
+          </div>
+        </div>
+        <script>
+            // Create floating particles
+            function createParticles() {
+              const container = document.querySelector('.container');
+              for (let i = 0; i < 10; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = (Math.random() * 2) + 's';
+                container.appendChild(particle);
+              }
+            }
+        
+            // Initialize particles on load
+            window.addEventListener('load', createParticles);
+          </script>
     
+        <h3 class="title">Calcul scientifique pour chimie</h3>
+        <div class="underline"></div>
+    </div>
     <div class="container">
         <h1 class="text-center">Calcul de la Masse Molaire</h1>
         <form id="molarMassForm">
@@ -72,11 +122,11 @@
     <h1 class="text-center">Calcul de la Concentration Molaire</h1>
     <form id="molarityForm">
         <div class="form-group">
-            <label for="moles">Nombre de moles de soluté \( n \) :</label>
+            <label for="moles">Nombre de moles de soluté (n) :</label>
             <input type="number" class="form-control" id="moles" placeholder="Ex : 0.2" step="any" required>
         </div>
         <div class="form-group">
-            <label for="volume">Volume de la solution \( V \) (en L) :</label>
+            <label for="volume">Volume de la solution (V) (en L) :</label>
             <input type="number" class="form-control" id="volume" placeholder="Ex : 4" step="any" required>
         </div>
         <button type="submit" class="btn btn-primary">Calculer</button>
@@ -99,7 +149,7 @@
     <h1 class="text-center">Calcul du pH d'une Solution</h1>
     <form id="phForm">
         <div class="form-group">
-            <label for="hConcentration">Concentration en ions \( [\text{H}^+] \) (en mol/L) :</label>
+            <label for="hConcentration">Concentration en ions [H3O+] (en mol/L) :</label>
             <input type="number" class="form-control" id="hConcentration" placeholder="Ex : 1e-4" step="any" required>
         </div>
         <button type="submit" class="btn btn-primary">Calculer</button>
@@ -118,18 +168,18 @@
     });
 </script>
 <div class="container">
-    <h1 class="text-center">Calcul de la Pression </h1>
+    <h1 class="text-center">Calcul de la Pression</h1>
     <form id="gasLawForm">
         <div class="form-group">
-            <label for="moles">Nombre de moles \( n \) :</label>
+            <label for="moles">Nombre de moles (n) :</label>
             <input type="number" class="form-control" id="moles" placeholder="Ex : 2" step="any" required>
         </div>
         <div class="form-group">
-            <label for="volume">Volume \( V \) (en m³) :</label>
+            <label for="volume">Volume (V) (en m³) :</label>
             <input type="number" class="form-control" id="volume" placeholder="Ex : 0.1" step="any" required>
         </div>
         <div class="form-group">
-            <label for="temperature">Température \( T \) (en K) :</label>
+            <label for="temperature">Température (T) (en K) :</label>
             <input type="number" class="form-control" id="temperature" placeholder="Ex : 300" step="any" required>
         </div>
         <button type="submit" class="btn btn-primary">Calculer</button>
@@ -155,19 +205,19 @@
     <h1 class="text-center">Calcul de l'Énergie de Liaison</h1>
     <form id="bondEnergyForm">
         <div class="form-group">
-            <label for="C_H_energy">Énergie par liaison \( C-H \) (kJ/mol) :</label>
+            <label for="C_H_energy">Énergie par liaison (C-H) (en kJ/mol) :</label>
             <input type="number" class="form-control" id="C_H_energy" placeholder="Ex : 412" step="any" required>
         </div>
         <div class="form-group">
-            <label for="C_C_energy">Énergie par liaison \( C-C \) (kJ/mol) :</label>
+            <label for="C_C_energy">Énergie par liaison (C-C) (en kJ/mol) :</label>
             <input type="number" class="form-control" id="C_C_energy" placeholder="Ex : 348" step="any" required>
         </div>
         <div class="form-group">
-            <label for="C_H_count">Nombre de liaisons \( C-H \) :</label>
+            <label for="C_H_count">Nombre de liaisons (C-H) :</label>
             <input type="number" class="form-control" id="C_H_count" placeholder="Ex : 6" step="any" required>
         </div>
         <div class="form-group">
-            <label for="C_C_count">Nombre de liaisons \( C-C \) :</label>
+            <label for="C_C_count">Nombre de liaisons (C-C) :</label>
             <input type="number" class="form-control" id="C_C_count" placeholder="Ex : 1" step="any" required>
         </div>
         <button type="submit" class="btn btn-primary">Calculer</button>
@@ -222,3 +272,4 @@
     </script>
 </body>
 </html>
+
